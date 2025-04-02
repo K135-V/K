@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Wiki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        #search-form {
+            margin-bottom: 20px;
+        }
+        #iframe-container {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            margin-top: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Browse the Web Through My Site</h1>
+
+    <form id="search-form" onsubmit="loadPage(event)">
+        <input type="text" id="url-input" placeholder="Enter a URL" required>
+        <button type="submit">Go</button>
+    </form>
+
+    <div id="iframe-container">
+        <iframe id="iframe" src="https://www.google.com"></iframe>
+    </div>
+
+    <script>
+        function loadPage(event) {
+            event.preventDefault();
+            const url = document.getElementById('url-input').value;
+            const iframe = document.getElementById('iframe');
+           
+            // Ensure the URL starts with "http://" or "https://"
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                alert("Please enter a valid URL with 'http://' or 'https://'");
+                return;
+            }
+
+            iframe.src = url;
+        }
+    </script>
+
+</body>
+</html>
+
